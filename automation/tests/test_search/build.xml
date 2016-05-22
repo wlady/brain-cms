@@ -1,0 +1,7 @@
+<project name="Feature Test Runner" default="test">
+    <target name="test" description="execute behat test">
+        <exec executable="/usr/local/bin/behat">
+            <arg line="--profile jenkins"/>
+        </exec>
+    </target>
+</project>

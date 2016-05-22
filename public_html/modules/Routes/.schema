@@ -1,0 +1,8 @@
+DROP TABLE IF EXISTS `cms_routes`;
+CREATE TABLE IF NOT EXISTS `cms_routes` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `url` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `route` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `method` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;

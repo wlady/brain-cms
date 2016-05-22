@@ -1,0 +1,8 @@
+FormFields: "Form Fields"
+fname: "Field Name"
+ftype: "Field Type"
+fempty: "Allow Blank"
+fdefault: "Default Value"
+fparser: "Forms Parser"
+fparser_tooltip: "Parses Form and Generates Validators"
+fparser_found: "Parser found {0} fields.<br />Would you like to use them?"

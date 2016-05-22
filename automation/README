@@ -1,0 +1,126 @@
+---
+
+# Table of contents
+
+---
+
+1. Install OS packages if not yet installed
+1.1. Install composer
+2. Secure mysql config
+3. Bamboo settings
+4. Destination of folders
+4.1. /files
+4.2. /fixtures
+4.3. /reports
+5. Jenkins settings
+5.1. Build
+5.2. Post-build Actions
+
+---
+---
+
+# 1. Install OS packages if not yet installed:
+
+- jenkins
+- patch
+- java
+- ant
+- ant-contrib.jar
+- pecl
+- php-devel
+- phpunit
+- phpMyAdmin
+- php-soap
+- php-pecl-xdebug
+- php-opcache
+- memcached
+- libmemcached
+- xml2
+- zlib
+- zlib-devel
+- libmemcached-devel
+- sendmail
+
+## 1.1 Install composer
+curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin
+composer self-update
+composer -d=/usr/local/bin install
+
+---
+
+# 2. Secure mysql config
+
+Set your mysql login path with mysql_config_editor (available from MySQL 5.6):
+$ mysql_config_editor set --login-path=cr3_user1 --host=localhost --user=cr3_user1 --password
+Make sure that the login path is the same as DB_USER in your config file.
+
+---
+
+# 3. Bamboo settings
+
+install full JDK from Oracle
+
+Set env variables:
+export ANT_HOME=/usr/share/ant
+export JAVA_HOME=/usr/java/latest
+
+edit /etc/environment -> export JAVA_HOME=/usr/java/latest
+useradd --create-home --home-dir /usr/local/bamboo --shell /bin/bash bamboo
+extract bamboo archive to /usr/local/atlassian-bamboo
+edit /usr/local/atlassian-bamboo/WEB-INF/classes/bamboo-init.properties:
+bamboo.home=/usr/local/bamboo
+run /usr/local/atlassian-bamboo/bin/start-bamboo.sh
+goto http://localhost:8085
+get evaluation license and register bamboo.
+
+Express install:
+Username: root
+Password: root
+
+!!! Set Ant path to the same as ANT_HOME in Settings -> Executables
+
+----
+
+# 4. Destination of folders
+
+## 4.1. /files
+Contains files that needed for deployment of test environment.
+1. ".automation_server_domain" - contains automation server domain (for example it can be). Generates automatically by
+jenkins "Execute shell" command (see below in "Jenkins set up"). Used for replacing in files which contains domain name.
+2. ".files" - key value (dest from=dest to) representation of files which should be copied.
+3. ".files_to_replace_host_name" - consist of list of files which should be processed with replacing domain name.
+4. ".htaccess" - prepared for testing envirinment. Will be copied to public_html.
+5. ".config.local.json" - prepared for test environment. Will be copied to document root.
+
+## 4.2. /fixtures
+This part contains files which needed for deployment data base.
+1. ".properties" - generates automatically by "props.php". Contains db connection settings which extracted from config.local.json
+2. ".bumpcms_dump" - contains SQL dump data.
+3. ".bumpcms_schema" - contains SQL schema structure data.
+
+## 4.3. /reports
+Contains reports. Do ant build to generate them.
+
+----
+
+# 5. Jenkins settings
+
+## 5.1. Build
+1. echo "automation_server_domain=example.domain.com" > "${WORKSPACE}/automation/files/.automation_server_domain"
+2. build.xml
+3. automation/files/build.xml
+4. automation/fixtures/build.xml
+5. automation/reports/build.xml
+6. rm -rf ${WORKSPACE}/public_html/reports
+   ln -s "${WORKSPACE}/automation/reports" "${WORKSPACE}/public_html/reports"
+   echo "${BUILD_URL}" > "${WORKSPACE}/automation/reports/.job"
+
+## 5.2. Post-build Actions
+1. Publish JUnit test result report (automation/reports/*/unitreport.xml)
+
+If JIRA installed then:
+1. Update relevant JIRA issues
+2. Create Jira Issue
+3. JIRA Build Notifier (POST URL: http://example.name.com:8180/rest/jenkins/1.0/job/5/sync)
+
+----

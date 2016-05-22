@@ -1,0 +1,8 @@
+Ext.ns('App.Users');
+App.Users.whitelist = {{ whitelist }};
+App.modulesQueue.push({ module: 'Users', component: 'module.Users.ux.Grid', config: {} });
+
+App.userTypes = [];
+{% for provider in providersData %}
+    App.userTypes.push(['{{ provider.type }}', '{{ provider.title }}']);
+{% endfor %}

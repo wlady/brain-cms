@@ -1,0 +1,31 @@
+<project name="BCMS 7 PHP Unit Test Runner" default="build">
+    <import file="macros.xml"/>
+    <echo>${ant.project.name}</echo>
+    <echo file=".htaccess">
+&lt;FilesMatch "\.json$"&gt;
+    Allow from All
+&lt;/FilesMatch&gt;
+
+AddHandler application/x-httpd-php .html
+php_value auto_prepend_file ${basedir}/prepend.php
+php_value auto_append_file ${basedir}/append.php
+    </echo>
+    <echo>Init environment</echo>
+    <exec executable="php">
+        <arg line="reinit.php"/>
+    </exec>
+    <unzip src="assets.zip" dest="./" />
+
+    <subant failonerror="true">
+        <fileset dir="../../" includes="**/Tests/build.xml" excludes="build.xml"/>
+        <target name="build"/>
+    </subant>
+
+    <target name="build">
+        <exec executable="../bin/clover_aggregator">
+            <arg line="-i=. -o=clover.xml -s"/>
+        </exec>
+        <echo>Done</echo>
+    </target>
+
+</project>

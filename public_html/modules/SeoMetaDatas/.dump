@@ -1,0 +1,5 @@
+INSERT INTO `cms_seometadatas` (`id`, `url`, `data`) VALUES
+(1, '/contact', 'O:8:"stdClass":7:{s:8:"f_xtitle";s:15:"Contact Us Page";s:11:"f_xkeywords";s:0:"";s:14:"f_xdescription";s:0:"";s:11:"f_xprotocol";s:0:"";s:10:"f_xsitemap";s:4:"true";s:15:"f_xcachecontrol";s:6:"Select";s:12:"f_xcachetime";s:6:"Select";}'),
+(2, '/', 'O:8:"stdClass":7:{s:8:"f_xtitle";s:9:"Home Page";s:11:"f_xkeywords";s:0:"";s:14:"f_xdescription";s:0:"";s:11:"f_xprotocol";s:0:"";s:10:"f_xsitemap";s:4:"true";s:15:"f_xcachecontrol";s:6:"Select";s:12:"f_xcachetime";s:6:"Select";}'),
+(3, '/contact/thanks', 'O:8:"stdClass":7:{s:8:"f_xtitle";s:14:"Thank You Page";s:11:"f_xkeywords";s:0:"";s:14:"f_xdescription";s:0:"";s:11:"f_xprotocol";s:0:"";s:10:"f_xsitemap";s:6:"Select";s:15:"f_xcachecontrol";s:6:"Select";s:12:"f_xcachetime";s:6:"Select";}'),
+(4, '/sitemap.xml', 'O:8:"stdClass":7:{s:8:"f_xtitle";s:12:"Sitemap Page";s:11:"f_xkeywords";s:0:"";s:14:"f_xdescription";s:0:"";s:11:"f_xprotocol";s:0:"";s:10:"f_xsitemap";s:6:"Select";s:15:"f_xcachecontrol";s:6:"Select";s:12:"f_xcachetime";s:6:"Select";}');

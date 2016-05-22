@@ -1,0 +1,24 @@
+<project name="Init Environment" default="build" basedir=".">
+    <target name="patches" description="Apply patches">
+        <echo>Apply patches</echo>
+        <patch patchfile="${basedir}/minify.patch" strip="0"/>
+    </target>
+    <target name="build" description="init production environment" >
+        <exec executable="/usr/local/bin/composer" failonerror="true">
+            <arg value="install" />
+            <arg value="--no-dev" />
+            <arg value="--prefer-dist" />
+            <arg value="--no-interaction" />
+        </exec>
+        <antcall target="patches"/>
+    </target>
+    <target name="tests" description="init staging/development environment" >
+        <exec executable="/usr/local/bin/composer" failonerror="true">
+            <arg value="install" />
+            <arg value="--prefer-dist" />
+            <arg value="--no-interaction" />
+        </exec>
+        <antcall target="patches"/>
+        <delete dir="data"/>
+    </target>
+</project>

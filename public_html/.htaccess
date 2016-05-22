@@ -1,0 +1,34 @@
+AddDefaultCharSet UTF-8
+Options -Indexes
+
+<FilesMatch "(^\.)|(\.tpl|\.twig|\.json$)">
+    Order Deny,Allow
+    Deny from All
+</FilesMatch>
+
+RewriteEngine On
+RewriteBase /
+
+RewriteCond %{HTTPS}                    !=on
+RewriteCond %{HTTP:X-Forwarded-Proto}   !=https [NC]
+RewriteCond %{HTTP_HOST}                !^www\.konturlabs\.com$ [NC]
+RewriteCond %{HTTP_HOST}/%{SERVER_ADDR} !^([^/]+)/\1$
+RewriteCond %{HTTP_HOST}                !^bcms70(\.(.*)-dev)?(:\d+)?$ [NC]
+RewriteCond %{HTTP_HOST}                !^(www\.){0,1}bcms70\.bumpnetworks\.com$ [NC]
+RewriteCond %{HTTP_HOST}                !^cdn[1-5]\. [NC]
+RewriteRule ^                           http://www.konturlabs.com%{REQUEST_URI} [R=301,L]
+
+RewriteRule ^min/([a-z]=.*)             /min/index.php?$1 [L,NE]
+
+RewriteCond %{REQUEST_URI}              ^/admin$
+RewriteRule ^                           /admin/ [R=301,L]
+
+RewriteRule ^admin/generate/(.*)        /modules/Admin/?modules=$1 [L]
+RewriteRule ^(admin)                    /modules/Admin/ [L,QSA]
+
+RewriteRule ^thumb/(.*)                 /thumb.php [L,QSA]
+
+# all other requests to index.php
+RewriteCond %{REQUEST_FILENAME}         !-f
+RewriteCond %{REQUEST_FILENAME}         !-d
+RewriteRule ^                           index.php [L]

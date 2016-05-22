@@ -1,0 +1,6 @@
+var __ = {
+{% for key, item in LABELS %}
+{% if item %}'{{ key }}':{{ item|raw }}{% if not loop.last %},{% endif %}{% endif %}
+{% endfor %}
+};
+var currentUser = '{{ user }}';

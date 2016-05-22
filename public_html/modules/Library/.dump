@@ -1,0 +1,2 @@
+INSERT INTO `cms_library_articles` (`id`, `alias`, `title`, `content`, `active`) VALUES
+(1, 'thank-you', 'Thank You', '<p>Thank you! We will contact you shortly.</p>', 'true');

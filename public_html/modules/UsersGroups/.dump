@@ -1,0 +1,5 @@
+INSERT INTO `cms_users_groups` (`group_id`, `user_group`, `user_level`, `group_active`) VALUES
+(1, 'Administrator', 100, 'true'),
+(2, 'Editor', 50, 'false'),
+(3, 'Zeus', 1000, 'true'),
+(5, 'Guest', 0, 'false');

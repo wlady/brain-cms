@@ -1,0 +1,77 @@
+{
+  "ext-js": {
+    "position": "middle",
+    "type": "javascript",
+    "compress": 0,
+    "link": [
+      "lib/ext/ext-bootstrap.js",
+      "lib/ext/build/packages/ux/classic/ux.js"
+    ]
+  },
+  "jquery": {
+    "position": "middle",
+    "type": "javascript",
+    "compress": 0,
+    "link": [
+      "//code.jquery.com/jquery-1.10.1.min.js",
+      "//code.jquery.com/jquery-migrate-1.2.1.min.js"
+    ]
+  },
+  "bcms-css": {
+    "position": "top",
+    "type": "css",
+    "compress": 1,
+    "link": [
+      "ux/grid/css/GridFilters.css",
+      "ux/grid/css/RangeMenu.css",
+      "ux/css/ItemSelector.css",
+      "ux/css/BoxSelect.css",
+      "style.css"
+    ]
+  },
+  "google-map": {
+    "position": "bottom",
+    "type": "javascript",
+    "compress": 0,
+    "link": "//maps.googleapis.com/maps/api/js?v=3"
+  },
+  "shadowbox-css": {
+    "position": "top",
+    "type": "css",
+    "compress": 1,
+    "link": "lib/shadowbox/shadowbox.css"
+  },
+  "shadowbox": {
+    "position": "middle",
+    "type": "javascript",
+    "compress": 1,
+    "link": [
+      "lib/shadowbox/shadowbox-src.js",
+      "lib/shadowbox-init.js"
+    ]
+  },
+  "jcrop": {
+    "position": "middle",
+    "type": "javascript",
+    "compress": 0,
+    "link": "lib/Jcrop/js/jquery.Jcrop.min.js"
+  },
+  "jcrop-css": {
+    "position": "top",
+    "type": "css",
+    "compress": 0,
+    "link": "lib/Jcrop/css/jquery.Jcrop.min.css"
+  },
+  "camanjs": {
+    "position": "middle",
+    "type": "javascript",
+    "compress": 0,
+    "link": "lib/camanjs/caman.full.pack.js"
+  },
+  "jwplayer": {
+    "position": "middle",
+    "type": "javascript",
+    "compress": 1,
+    "link": "lib/jwplayer/jwplayer.js"
+  }
+}

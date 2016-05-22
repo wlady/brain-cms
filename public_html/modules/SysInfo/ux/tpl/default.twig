@@ -1,0 +1,190 @@
+<style>
+    .tableHeader {
+        font-family: Verdana, Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        font-size: 12pt;
+        color: #659965;
+        line-height: 1.8;
+        padding-left: 0.5em;
+        text-align: left;
+        border-bottom: 1px dashed silver;
+    }
+
+    .phpTable td {
+        margin: 0px;
+        padding: 5px;
+    }
+
+    .tdSysLeft {
+        font-weight: bold;
+        font-size: 10pt;
+        padding: 5px;
+    }
+
+    .tdCompLeft {
+        font-weight: bold;
+        font-size: 9pt;
+        padding: 5px 0 0 10px;
+    }
+
+    .tdSysRight {
+        font-weight: normal;
+        font-size: 10pt;
+    }
+
+    .tdSysRight span#svn {
+        font-size: 8pt;
+        color: #023857;
+    }
+
+    .e {
+        font-weight: bold;
+        width: 200px;
+    }
+
+    .v {
+        font-weight: normal;
+    }
+
+    #sysinfo-panel h1, #sysinfo-panel h2 {
+        font-size: 12px;
+        font-weight: bold;
+    }
+
+    #sysinfo-panel h2 {
+        font-size: 14px;
+        margin: 20px;
+    }
+
+    th {
+        padding: 5px;
+        color: gray;
+        font-size: 12px;
+        font-weight: bold;
+    }
+</style>
+<table width='99%' border='0' align='center' cellpadding='1' cellspacing='1'>
+    <tr>
+        <td class='tableHeader'>Components Info</td>
+    </tr>
+</table>
+<table width="99%" border="0" align='center' cellspacing="0" cellpadding="3">
+    {% for item in COMPONENTS.components %}
+        <tr>
+            <td width="300" class="tdCompLeft">{{ item.name }} {{ item.version }}</td>
+            <td class="tdSysRight"><a href="{{ item.url }}" target="_blank">{{ item.url }}</a></td>
+        </tr>
+    {% endfor %}
+</table>
+<div style="padding:20px;display:block;"></div>
+{% if PACKAGES and PACKAGES.packages %}
+    <table width='99%' border='0' align='center' cellpadding='1' cellspacing='1'>
+        <tr>
+            <td class='tableHeader'>Packages Info</td>
+        </tr>
+    </table>
+    <table width="99%" border="0" align='center' cellspacing="0" cellpadding="3">
+        {% for item in PACKAGES.packages %}
+            <tr>
+                <td width="300" class="tdCompLeft">{{ item.name }} {{ item.version }}</td>
+                <td class="tdSysRight">{% if item.homepage %}<a href="{{ item.homepage }}"
+                                                              target="_blank">{{ item.homepage }}</a>{%  elseif item.source.url %}
+                        <a href="{{ item.source.url }}" target="_blank">{{ item.source.url }}</a>{% endif %}</td>
+            </tr>
+        {% endfor %}
+    </table>
+    <div style="padding:20px;display:block;"></div>
+{% endif %}
+<table width='99%' border='0' align='center' cellpadding='1' cellspacing='1'>
+    <tr>
+        <td class='tableHeader'>Client Info</td>
+    </tr>
+</table>
+<table width="99%" border="0" align='center' cellspacing="0" cellpadding="3">
+    <tr>
+        <td width="120" class="tdSysLeft">System</td>
+        <td colspan="3" class="tdSysRight">{{ DATA.this }}</td>
+    </tr>
+    <tr>
+        <td width="120" class="tdSysLeft">Version</td>
+        <td colspan="3" class="tdSysRight">{{ DATA.version }}
+            {% if DATA.rev_num or DATA.rev_date %}
+                (
+                <span id="svn">{{ DATA.rev_num }} {{ DATA.rev_date }}</span>
+                )
+            {% endif %}
+        </td>
+    </tr>
+    {#<tr>
+    <td width="120" class="tdSysLeft">ExtJS</td>
+    <td colspan="3" class="tdSysRight"><span id="info_ext"></span></td>
+    </tr>
+    <tr>#}
+    <td width="120" class="tdSysLeft">Loggin in as</td>
+    <td colspan="3" class="tdSysRight">{{ DATA.client_role }}</td>
+    </tr>
+    <tr>
+        <td width="120" class="tdSysLeft">UA</td>
+        <td colspan="3" class="tdSysRight">{{ DATA.client_ua }}</td>
+    </tr>
+</table>
+<div style="padding:20px;display:block;"></div>
+<table width='99%' border='0' align='center' cellpadding='1' cellspacing='1'>
+    <tr>
+        <td class='tableHeader'>Server Info</td>
+    </tr>
+</table>
+<table width="99%" border="0" align='center' cellspacing="0" cellpadding="3">
+    <tr>
+        <td width="120" class="tdSysLeft">Host</td>
+        <td class="tdSysRight">{{ DATA.host }} {% if DATA.ip %}({{ DATA.ip }}){%  endif %}</td>
+    </tr>
+    <tr>
+        <td class="tdSysLeft">Server OS</td>
+        <td class="tdSysRight">{{ DATA.system }} {{ DATA.kernel }}</td>
+    </tr>
+    <tr>
+        <td class="tdSysLeft">Server Date</td>
+        <td colspan="3" class="tdSysRight">{{ DATA.date }}</td>
+    </tr>
+    <tr>
+        <td class="tdSysLeft">Server Uptime</td>
+        <td class="tdSysRight">{{ DATA.uptime }}</td>
+    </tr>
+    <tr>
+        <td class="tdSysLeft">HTTP Server</td>
+        <td class="tdSysRight">{{ DATA.http_server }}</td>
+    </tr>
+    <tr>
+        <td class="tdSysLeft">PHP Version</td>
+        <td class="tdSysRight">{{ DATA.php }} (Zend {{ DATA.zend }})</td>
+    </tr>
+    {% if DATA.ffmpeg %}
+        <tr>
+            <td class="tdSysLeft">ffmpeg-php</td>
+            <td class="tdSysRight">{{ DATA.ffmpeg }}</td>
+        </tr>
+    {% endif %}
+    <tr>
+        <td class="tdSysLeft">DB Host</td>
+        <td class="tdSysRight">{{ DATA.db_server }} {% if DATA.db_ip %}({{ DATA.db_ip }}){% endif %}</td>
+    </tr>
+    <tr>
+        <td class="tdSysLeft">DB Name</td>
+        <td class="tdSysRight">{{ DATA.db_version.name }} {{ DATA.db_version.version }}</td>
+    </tr>
+</table>
+<div style="padding:20px;display:block;"></div>
+{% if DATA.phpinfo %}
+    <table width='99%' border='0' align='center' cellpadding='1' cellspacing='1'>
+        <tr>
+            <td class='tableHeader'>PHP Info</td>
+        </tr>
+    </table>
+    <table border="0" width="100%" cellspacing="0" cellpadding="2" class="phpTable">
+        <tr>
+            <td>{{ DATA.phpinfo|raw }}</td>
+        </tr>
+    </table>
+    <div style="height:50px"></div>
+{% endif %}

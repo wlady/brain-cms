@@ -1,0 +1,22 @@
+{# First of all load ExtJS main style and BCMS theme files #}
+{% if CONFIG.currentUser.user_theme == 'bcms7' %}
+	<link rel="stylesheet" type="text/css" href="lib/ext/build/classic/theme-bcms7/resources/theme-bcms7-all.css"/>
+{% elseif CONFIG.currentUser.user_theme == 'bcms7-touch' %}
+	<link rel="stylesheet" type="text/css" href="lib/ext/build/classic/theme-bcms7-touch/resources/theme-bcms7-all.css"/>
+{% else %}
+	<link rel="stylesheet" type="text/css" href="lib/ext/resources/css/ext-all.css" />
+{% endif %}
+{#then load additional theme css file#}
+<link rel="stylesheet" type="text/css" href="themes/{{ CONFIG.currentUser.user_theme }}/css/style.css" />
+
+{# then load files from .resources #}
+{% for resource in RESOURCES.top %}{{ resource|raw }}{% endfor %}
+{% for resource in RESOURCES.middle %}{{ resource|raw }}{% endfor %}
+
+{# then load theme JavaScript file#}
+{% if CONFIG.currentUser.user_theme == 'bcms7' %}
+	<script type="text/javascript" src="lib/ext/build/classic/theme-bcms7/theme-bcms7.js"></script>
+{% endif %}
+{% if CONFIG.currentUser.user_theme == 'bcms7-touch' %}
+	<script type="text/javascript" src="lib/ext/build/classic/theme-bcms7-touch/theme-bcms7.js"></script>
+{% endif %}

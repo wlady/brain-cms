@@ -1,0 +1,9 @@
+DROP TABLE IF EXISTS `cms_email_attachments`;
+CREATE TABLE IF NOT EXISTS `cms_email_attachments` (
+  `a_id` int(11) NOT NULL AUTO_INCREMENT,
+  `form_id` int(11) NOT NULL,
+  `a_path` text COLLATE utf8_unicode_ci NOT NULL,
+  `a_filename` text COLLATE utf8_unicode_ci NOT NULL,
+  `a_size` int(11) NOT NULL,
+  PRIMARY KEY (`a_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;

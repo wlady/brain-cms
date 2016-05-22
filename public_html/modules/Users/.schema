@@ -1,0 +1,42 @@
+DROP TABLE IF EXISTS `cms_users`;
+CREATE TABLE IF NOT EXISTS `cms_users` (
+  `user_id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `user_type` varchar(255) COLLATE utf8_unicode_ci DEFAULT 'auth_users',
+  `user_login` varchar(30) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `ug_id` int(11) NOT NULL,
+  `user_name` varchar(100) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `user_password` varchar(60) NULL DEFAULT NULL,
+  `user_last_login` datetime DEFAULT NULL,
+  `user_email` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `user_registered` date DEFAULT NULL,
+  `user_theme` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'gray',
+  `user_editor` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'htmleditor',
+  `user_layout` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'classic',
+  `user_iconsize` int(11) NOT NULL DEFAULT '64',
+  `user_debug` enum('true','false') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'false',
+  `user_customizable` enum('true','false') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'true',
+  `user_active` enum('true','false') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'true',
+  PRIMARY KEY (`user_id`),
+  KEY `ul_id` (`ug_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='CMS users';
+
+DROP TABLE IF EXISTS `cms_users_modules`;
+CREATE TABLE IF NOT EXISTS `cms_users_modules` (
+  `id` int(11) NOT NULL,
+  `module_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+DROP TABLE IF EXISTS `cms_users_profiles`;
+CREATE TABLE IF NOT EXISTS `cms_users_profiles` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `u_login` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `u_type` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `u_hash` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `u_settings` text COLLATE utf8_unicode_ci,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+CREATE OR REPLACE
+SQL SECURITY INVOKER
+VIEW cms_view_users AS
+SELECT* FROM cms_users u LEFT JOIN cms_users_groups ug ON u.ug_id=ug.group_id;

@@ -1,0 +1,11 @@
+{
+    "Title": "EMails Attachments",
+    "Version": "7.0",
+    "Author": [
+        "Vladimir Zabara <wlady@od.bumpnetworks.com>"
+    ],
+    "Publisher": "Bump Networks, Inc",
+    "Release": "Thu 23 Jul 2015 01:22:16 PM EEST",
+    "Description": "EMails Attachments",
+    "Depends": "EmailForms"
+}

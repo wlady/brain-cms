@@ -1,0 +1,33 @@
+<project>
+    <property name="src" location="../"/>
+    <import file="macros.xml" />
+    <target name="build" depends="init" description="run tests" >
+        <echo>${ant.project.name}</echo>
+        <exec executable="${vendor}/bin/phpunit">
+            <arg line="--coverage-php '${dist}/coverage/${dir}-coverage.cov' --log-junit '${dist}/${dir}/unitreport.xml' --testdox-html '${dist}/${dir}/textdox.html'"/>
+        </exec>
+        <exec executable="${dist}/../bin/coverage_cleaner">
+            <arg line="--input='${dist}/coverage/${dir}-coverage.cov' --coverage-clover='${dist}/${dir}/clover.xml' --coverage-html='${dist}/${dir}'"/>
+        </exec>
+        <quiet>
+            <exec executable="${vendor}/bin/phpmetrics">
+                <arg line="--report-html='${dist}/${dir}/phpmetrics.html' ."/>
+            </exec>
+            <exec executable="${vendor}/bin/phing">
+                <arg line="-buildfile phing.xml"/>
+            </exec>
+            <exec executable="/usr/local/bin/allure">
+                <arg line="generate '${dist}/${dir}/allure-results' -v 1.4.0 -o '${dist}/${dir}/allure-report'"/>
+            </exec>
+        </quiet>
+    </target>
+    <target name="init" depends="clean" description="create report dirs" >
+        <mkdir dir="${dist}/coverage" />
+        <mkdir dir="${dist}/${dir}" />
+        <mkdir dir="${dist}/${dir}/junit-report" />
+        <echo file="${dist}/${dir}/.dir">name=${ant.project.name}${line.separator}dir=${src}${line.separator}type=${type}</echo>
+    </target>
+    <target name="clean" description="clean up" >
+        <delete dir="${dist}/${dir}"/>
+    </target>
+</project>

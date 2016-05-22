@@ -1,0 +1,43 @@
+{
+    "require": {
+        "twig/twig": "1.x-dev",
+        "slim/slim": "2.*",
+        "slim/views": "dev-master",
+        "swiftmailer/swiftmailer": "5.x-dev",
+        "meenie/javascript-packer": "dev-master",
+        "mustangostang/spyc": "dev-master",
+        "tijsverkoyen/akismet": "dev-master",
+        "buggedcom/phpvideotoolkit": "dev-master",
+        "adodb/adodb-php": "dev-master",
+        "mrclay/minify": "2.2.*",
+        "embed/embed": "dev-master",
+        "michelf/php-markdown": "1.4.*",
+        "nikic/php-parser": "dev-master",
+        "dompdf/dompdf": "dev-master",
+        "mailchimp/mailchimp": ">=2.0.0",
+        "google/recaptcha": "~1.1",
+        "tecnickcom/tcpdf": "dev-master",
+        "ramsey/uuid": "^2.8",
+        "phpunit/phpunit": "5.2.x"
+    },
+    "require-dev": {
+        "allure-framework/allure-phpunit": "~1.2.0",
+        "halleck45/phpmetrics": "dev-master",
+        "phing/phing": "dev-master",
+        "prewk/xml-string-streamer": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Bump\\": "engine/Bump",
+            "Bump\\Modules\\": "public_html/modules"
+        },
+        "files": [
+            "vendor/adodb/adodb-php/adodb-exceptions.inc.php",
+            "vendor/adodb/adodb-php/adodb-active-record.inc.php"
+        ]
+    },
+    "include-path": [
+        "engine/3rdparty",
+        "vendor/adodb/adodb-php/"
+    ]
+}

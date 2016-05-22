@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>{{ meta.title }}</title>
+<meta name="description" content="{{ meta.description }}" />
+<meta name="keywords" content="{{ meta.keywords }}" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="{{ useCdns('/min/g=style') }}" />
+{% include "include.external-resources.twig" %}
+{{ subheaders|raw }}
+{% include "include.google-analytics.twig" %}
+</head>
+<body style="background:none">
+{{ page.breadcrumbs|raw }}
+{{ page.p_content|raw }}
+{{ content|raw }}
+</body>
+</html>

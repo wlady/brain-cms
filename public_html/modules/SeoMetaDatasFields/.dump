@@ -1,0 +1,8 @@
+INSERT INTO `cms_seometadatas_fields` (`id`, `f_xtype`, `f_xname`, `f_xlabel`, `f_xorder`, `custom`) VALUES
+(1, 'textfield', 'title', 'Title', 0, 'false'),
+(2, 'textareafield', 'keywords', 'Keywords', 1, 'false'),
+(3, 'textareafield', 'description', 'Description', 2, 'false'),
+(4, 'protocolcombo', 'protocol', 'Protocol', 3, 'false'),
+(5, 'enumtruefalsecombo', 'sitemap', 'In SIte Map', 4, 'false'),
+(6, 'cachecontrolcombo', 'cachecontrol', 'HTTP Cache Control', 5, 'false'),
+(7, 'cachetimecombo', 'cachetime', 'HTTP Cache Time', 6, 'false');

@@ -1,0 +1,5 @@
+FileETag MTime Size
+SetOutputFilter DEFLATE
+Header merge Cache-Control public
+ExpiresActive On
+ExpiresDefault "access plus 1 months"

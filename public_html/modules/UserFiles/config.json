@@ -1,0 +1,20 @@
+{
+    "Title": "User Files",
+    "Version": "7.0",
+    "Author": [
+        "Vladimir Zabara <wlady@od.bumpnetworks.com>"
+    ],
+    "Publisher": "Bump Networks, Inc",
+    "Release": "Thu 23 Jul 2015 01:24:58 PM EEST",
+    "Description": "Advanced User Files Module",
+    "Panel": "content",
+    "Settings": [
+        {
+            "name": "settings[format]",
+            "fieldLabel": "Output Format",
+            "xtype": "outputimageformatcombo",
+            "hiddenName": "settings[format]",
+            "value": "png"
+        }
+    ]
+}

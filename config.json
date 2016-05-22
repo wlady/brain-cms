@@ -1,0 +1,63 @@
+{
+    "Title": "Bump CMS",
+    "Author": [
+        "Vladimir Zabara <wlady@od.bumpnetworks.com>"
+    ],
+    "Publisher": "Bump Networks, Inc.",
+    "Lang": "en",
+    "Version": "7.0",
+    "Debug": 0,
+    "MagicQuotes": 0,
+    "TimeZone": "UTC",
+    "Compression": 1,
+    "ErrorReporting": 3,
+    "Paths": {
+        "Engine": "/engine/",
+        "Modules": "/modules/",
+        "Templates": "/tpl/",
+        "UploadPath": "/userfiles/",
+        "ImagesDir": "/images/",
+        "FlashDir": "/flash/",
+        "FilesDir": "/files/",
+        "MediaDir": "/media/"
+    },
+    "Cache": "File",
+    "Twig": {
+        "CacheDir": "/twig/",
+        "CacheTime": 120,
+        "CompileCheck": 1,
+        "ForceCompile": 0,
+        "Debug": 0
+    },
+    "CMSBase": "/admin/",
+    "CMSSSL": 0,
+    "Domain": "http://bcms70/",
+    "Base": "/",
+    "Origins": [
+        "http://bcms70.wlady-dev"
+    ],
+    "ExternalResources": [
+        {
+            "type": "style",
+            "url": "//code.jquery.com/ui/1.10.4/themes/redmond/jquery-ui.css"
+        },
+        {
+            "type": "script",
+            "url": "//code.jquery.com/jquery-1.11.0.min.js"
+        },
+        {
+            "type": "script",
+            "url": "//code.jquery.com/ui/1.10.4/jquery-ui.min.js"
+        }
+    ],
+    "DB": {
+        "Server": "localhost",
+        "Platform": "mysqli",
+        "User": "root",
+        "Password": "passworD",
+        "Schema": "bcms60"
+    },
+    "AuthProviders": [
+        "Users"
+    ]
+}

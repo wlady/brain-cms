@@ -1,0 +1,83 @@
+curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin
+composer self-update
+
+touch composer.json:
+
+{
+    "require": {
+        "behat/behat": "2.4.*@stable",
+        "behat/mink": "1.4.*@stable",
+        "behat/mink-extension": "*",
+        "behat/mink-goutte-driver": "*",
+        "behat/mink-selenium2-driver": "*"
+    },
+    "minimum-stability": "dev",
+    "config": {
+        "bin-dir": "."
+    }
+}
+
+
+composer -d=/usr/local/bin update
+
+Jenkins
+=======
+
+
+Credentials to local Jira installation:
+jenkins_reporter / +##J528yJwz6=6J?
+
+
+Build Tasks:
+
+ant environment
+ant -f automation/build.xml
+ant -f automation/reports/build.xml
+
+rm -f /var/www/html/bcms60
+mkdir /var/www/html/bcms60
+ln -s "${WORKSPACE}/automation/reports" "/var/www/html/bcms60/reports"
+
+Post Build Actions:
+1) Publish xUnit test results report (path: automation/reports/*/unitreport.xml)
+2) Update relevant JIRA issues
+3) Create Jira Issue
+4) JIRA Build Notifier
+
+
+Bamboo
+======
+
+
+install full JDK from Oracle
+
+Set env variables:
+
+export ANT_HOME=/usr/share/ant
+export JAVA_HOME=/usr/java/latest
+
+edit /etc/environment -> export JAVA_HOME=/usr/java/latest
+
+useradd --create-home --home-dir /usr/local/bamboo --shell /bin/bash bamboo
+
+extract bamboo archive to /usr/local/atlassian-bamboo
+
+edit /usr/local/atlassian-bamboo/WEB-INF/classes/bamboo-init.properties:
+
+bamboo.home=/usr/local/bamboo
+
+run /usr/local/atlassian-bamboo/bin/start-bamboo.sh
+
+goto http://localhost:8085
+
+get evaluation license and register bamboo.
+
+Express install:
+
+Username: root
+Password: root
+
+!!! Set Ant path to the same as ANT_HOME in Settings -> Executables
+
+
+

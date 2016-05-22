@@ -1,0 +1,19 @@
+DROP TABLE IF EXISTS `cms_albums`;
+CREATE TABLE IF NOT EXISTS `cms_albums` (
+  `c_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `c_title` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `c_slug` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `c_order` int(10) unsigned DEFAULT '0',
+  `c_active` enum('true','false') COLLATE utf8_unicode_ci DEFAULT 'true',
+  `c_parent` int(10) unsigned DEFAULT '0',
+  `c_description` text COLLATE utf8_unicode_ci NOT NULL,
+  `c_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`c_id`),
+  KEY `c_parent` (`c_parent`),
+  KEY `c_active` (`c_active`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+CREATE OR REPLACE
+SQL SECURITY INVOKER
+VIEW cms_view_albums AS
+SELECT a.*,COUNT(id) cnt FROM cms_albums a LEFT JOIN cms_pictures p ON a.c_id=p.album_id GROUP BY (a.c_id);

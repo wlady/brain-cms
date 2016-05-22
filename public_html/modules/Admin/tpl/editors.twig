@@ -1,0 +1,131 @@
+{% if CONFIG.currentUser.user_editor == 'tinymce' %}
+	<script type="text/javascript" src="lib/tinymce/tinymce.min.js"></script>
+	<style>
+		.mce-window {
+			z-index: 1001 !important;
+		}
+		#mce-modal-block {
+			z-index: 1000 !important;
+		}
+	</style>
+	<script type="text/javascript">
+	Ext.ns('App');
+	Ext.require([
+		'Ext.ux.form.field.TinyMCE'
+	]);
+
+	function fireEvent(target, type, doc, event) {
+		doc = document;
+		if (doc.createEvent) {
+			event = new Event(type);
+			target.dispatchEvent(event);
+		} else {
+			event = doc.createEventObject();
+			target.fireEvent('on' + type, event);
+		}
+	}
+
+	App.tinymceDefaultConfig = {
+		relative_urls : false,
+		plugins: [
+			"advlist autolink link image imagetools lists charmap print preview hr anchor pagebreak spellchecker",
+			"searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime nonbreaking",
+			"save table contextmenu directionality emoticons template paste textcolor"
+		],
+		contextmenu: "link image inserttable | cell row column deletetable",
+		extended_valid_elements: "script[language|src|media],button[onclick]",
+		rel_list: [{
+			text: 'Not Selected',
+			value: ''
+		},{
+			text: 'No Follow',
+			value: 'nofollow'
+		}],
+		image_advtab: true,
+		convert_urls: false,
+		remove_script_host : false,
+		document_base_url : "{{ CONFIG.BASEURL }}",
+		file_browser_callback : function (field_name, url, type, win) {
+			var field = win.document.getElementById(field_name);
+			switch (type) {
+				case 'image':
+					Ext.create('module.UserFiles.ux.Window', {
+						search: url,
+						uploadPath: App.imagesDir,
+						singleSelect: true,
+						filters: [{
+							title: __.image_files,
+							extensions: App.picsExtentions
+						}],
+						callback: function(selectedRows) {
+							var data = selectedRows[0].data;
+							if (data.path && data.type=='image') {
+								field.value = data.path;
+								fireEvent(field, 'change');
+							}
+						}
+					});
+					break;
+				case 'media':
+					Ext.create('module.UserFiles.ux.Window', {
+						search: url,
+						uploadPath: App.flashDir,
+						singleSelect: true,
+						filters: [{
+							title: __.flash_files,
+							extensions: App.flashExtentions
+						}],
+						callback: function(selectedRows) {
+							var data = selectedRows[0].data;
+							if (data.path) {
+								field.value = data.path;
+								fireEvent(field, 'change');
+							}
+						}
+					});
+					break;
+				case 'file':
+					Ext.create('module.UserFiles.ux.Window', {
+						search: url,
+						uploadPath: App.docsDir,
+						singleSelect: true,
+						filters: [{
+							title: __.docs_files,
+							extensions: App.docsExtentions
+						}],
+						callback: function(selectedRows) {
+							var data = selectedRows[0].data;
+							if (data.path) {
+								field.value = data.path;
+								fireEvent(field, 'change');
+							}
+						}
+					});
+					break;
+			}
+		}
+	};
+	// the same as above but w/o file manager
+	App.tinymceBasicConfig = {
+		relative_urls : false,
+		plugins: [
+			"advlist autolink link lists charmap print preview hr anchor pagebreak spellchecker",
+			"searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime nonbreaking",
+			"save table contextmenu directionality emoticons template paste textcolor"
+		],
+		contextmenu: "link inserttable | cell row column deletetable",
+		rel_list: [{
+			text: 'Not Selected',
+			value: ''
+		},{
+			text: 'No Follow',
+			value: 'nofollow'
+		}],
+		convert_urls: false,
+		remove_script_host : false,
+		document_base_url : "{{ CONFIG.BASEURL }}"
+	};
+	</script>
+{% else %}
+	<link rel="stylesheet" type="text/css" href="ux/form/plugin/resources/css/style.css" />
+{% endif %}

@@ -1,0 +1,2 @@
+DROP TABLE IF EXISTS `cms_forms`;
+DROP VIEW IF EXISTS `cms_view_forms`;

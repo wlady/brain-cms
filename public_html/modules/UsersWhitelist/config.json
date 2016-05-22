@@ -1,0 +1,12 @@
+{
+    "Title": "Users Whitelist",
+    "Version": "7.0",
+    "Author": [
+        "Vladimir Zabara <wlady@od.bumpnetworks.com>"
+    ],
+    "Publisher": "Bump Networks, Inc",
+    "Release": "Fri, 21 Aug 2015 10:27:59 +0000",
+    "Description": "Users Whitelist",
+    "Core": 1,
+    "Panel": "hidden"
+}

@@ -1,0 +1,10 @@
+DROP TABLE IF EXISTS `cms_seometadatas_fields`;
+CREATE TABLE IF NOT EXISTS `cms_seometadatas_fields` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `f_xtype` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `f_xname` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `f_xlabel` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `f_xorder` int(11) DEFAULT NULL,
+  `custom` enum('true','false') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'true',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;

@@ -1,0 +1,31 @@
+var tmpTheme;
+App.modulesQueue.push({ module: 'Profile', component: 'module.Profile.ux.Editor', config:
+    {
+        listeners: {
+            afterrender: function() {
+                this.load({
+                    params: {
+                        _a: 'getProfile'
+                    },
+                    success: function(form, action) {
+                        if (action.result.success) {
+                            form.setValues(action.result.data);
+                            if (action.result.data.user_type!='Users') {
+                                form.findField('user_name').setDisabled(true);
+                                form.findField('user_email').setDisabled(true);
+                                form.findField('user_password').setDisabled(true);
+                            }
+                            if (action.result.data.user_customizable=='false') {
+                                form.findField('user_theme').setDisabled(true);
+                                form.findField('user_editor').setDisabled(true);
+                                form.findField('user_layout').setDisabled(true);
+                                form.findField('user_iconsize').setDisabled(true);
+                                form.findField('user_debug').setDisabled(true);
+                            }
+                        }
+                    }
+                });
+            }
+        }
+    }
+});

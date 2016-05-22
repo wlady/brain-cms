@@ -1,0 +1,41 @@
+Ext.ns('App');
+App.moduleRecords = Ext.create('Ext.data.Store', {
+	groupField: 'm_panel',
+	fields: {{ MODULES_DATA.fields|raw }},
+	data: {{ MODULES_DATA.data|raw }},
+	proxy: new Ext.data.proxy.Ajax({
+		url: App.baseUrl,
+		extraParams: {
+			_m: 'Modules',
+			_a: 'getRows',
+			metadata: 1
+		},
+		reader: {
+			type: 'json',
+			rootProperty: 'rows',
+			idProperty: 'm_id',
+			totalProperty: 'results'
+		},
+		sortParam: 'sortBy'
+	}),
+	remoteSort: true,
+	autoLoad: false
+});
+App.userModuleRecords = Ext.create('Ext.data.Store', {
+	fields: {{ USER_MODULES_DATA.fields|raw }},
+	data: {{ USER_MODULES_DATA.data|raw }},
+	remoteSort: true,
+	autoLoad: false
+});
+{% for ds in DATASTORES %}
+	App.{{ ds.id }}Array = {{ ds.data|raw }};
+	App.{{ ds.id }}DS = Ext.create('Ext.data.ArrayStore', {
+		idIndex: 0,
+		fields: {{ ds.fields|raw }},
+		data: App.{{ ds.id }}Array,
+		storeId: 'App.{{ ds.id }}ID'
+	});
+{% endfor %}
+{% for lines in JS %}
+{{ lines|raw }}
+{% endfor %}

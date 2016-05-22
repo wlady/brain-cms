@@ -1,0 +1,13 @@
+{
+    "Title": "My Profile",
+    "Version": "7.0",
+    "Author": [
+        "Vladimir Zabara <wlady@od.bumpnetworks.com>"
+    ],
+    "Publisher": "Bump Networks, Inc",
+    "Release": "Thu 23 Jul 2015 01:23:56 PM EEST",
+    "Description": "Users Profile Editor",
+    "Core": 1,
+    "Panel": "system",
+    "Depends": "Users"
+}

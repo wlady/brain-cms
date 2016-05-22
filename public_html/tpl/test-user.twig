@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>{{ meta.title }}</title>
+<meta name="description" content="{{ meta.description }}" />
+<meta name="keywords" content="{{ meta.keywords }}" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="/min/g=style" />
+{% include "include.external-resources.twig" %}
+{% include "include.google-analytics.twig" %}
+</head>
+<body style="background:none">
+User Name: {{ user.user_name }}
+</body>
+</html>

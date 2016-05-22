@@ -1,0 +1,8 @@
+<IfModule mod_headers.c>
+Header merge Cache-Control public
+</IfModule>
+
+<IfModule mod_expires.c>
+ExpiresActive On
+ExpiresDefault "access plus 1 months"
+</IfModule>

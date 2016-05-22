@@ -1,0 +1,19 @@
+{
+    "Title": "oEmbed",
+    "Version": "7.0",
+    "Author": [
+        "Vladimir Zabara <wlady@od.bumpnetworks.com>"
+    ],
+    "Publisher": "Bump Networks, Inc",
+    "Release": "Thu 23 Jul 2015 01:23:41 PM EEST",
+    "Description": "oEmbed Module (see http:\/\/oembed.com\/)",
+    "Core": 1,
+    "Settings": [
+        {
+            "name": "settings[cache]",
+            "fieldLabel": "Use Cache",
+            "value": "true",
+            "xtype": "enumtruefalsecombo"
+        }
+    ]
+}

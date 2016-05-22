@@ -1,0 +1,54 @@
+<script type="text/javascript">
+    Ext.Loader.setConfig({
+        disableCaching: false,
+        enabled: true,
+        paths: {
+            'Ext.ux': 'ux',
+            'module': '../../modules'
+        }
+    });
+    Ext.require([
+        'Ext.data.*',
+        'Ext.grid.*',
+        'Ext.ux.Utils',
+        'Ext.ux.grid.PageSize',
+        'Ext.ux.form.field.Month',
+        'Ext.ux.form.field.EnumTrueFalseCombo',
+        'Ext.ux.form.field.OutputImageFormatCombo',
+        'Ext.ux.form.field.commonCombo',
+        'Ext.ux.form.field.commonMultiselect',
+        'Ext.ux.form.field.CheckboxGroup',
+        'Ext.ux.form.field.wysiwygEditor',
+        'Ext.ux.form.field.ProtocolCombo',
+        'Ext.ux.form.field.CacheControlCombo',
+        'Ext.ux.form.field.CacheTimeCombo',
+        'Ext.ux.form.field.ResponsiveFieldset'
+    ]);
+    Ext.ns('App');
+
+    App.modulesQueue = [];
+    App.auth_type = '{{ SETTINGS.auth_type }}';
+    App.entryPoint = '{{ constant('CMSBASE') }}';
+    App.baseUrl = '{{ constant('CMSBASE') }}';
+    App.isDisableUpload = false;
+    App.isDisableEffectsImage = false;
+
+    blockUploadFiles = ['iphone', 'ipod', 'ipad'];
+    blockChangeEffectsImage = ['android', 'ios'];
+    platformTags = Ext.platformTags;
+
+    Ext.each(blockUploadFiles, function (item) {
+        if (!App.isDisableUpload) {
+            if (item in platformTags) {
+                platformTags[item] ? App.isDisableUpload = true : App.isDisableUpload = false;
+            }
+        }
+    });
+    Ext.each(blockChangeEffectsImage, function (item) {
+        if (!App.isDisableEffectsImage) {
+            if (item in platformTags) {
+                platformTags[item] > 0 ? App.isDisableEffectsImage = true : App.isDisableEffectsImage = false;
+            }
+        }
+    });
+</script>

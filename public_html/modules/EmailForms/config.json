@@ -1,0 +1,41 @@
+{
+    "Title": "Email Forms Manager",
+    "Version": "7.0",
+    "Author": [
+        "Vladimir Zabara <wlady@od.bumpnetworks.com>"
+    ],
+    "Publisher": "Bump Networks, Inc",
+    "Release": "Thu 23 Jul 2015 01:22:24 PM EEST",
+    "Description": "Email Forms Manager",
+    "Panel": "content",
+    "Settings": [
+        {
+            "name": "settings[server]",
+            "fieldLabel": "SMTP Server",
+            "xtype": "textfield"
+        },
+        {
+            "name": "settings[port]",
+            "fieldLabel": "SMTP Port",
+            "xtype": "textfield"
+        },
+        {
+            "name": "settings[ssl]",
+            "fieldLabel": "Use SSL",
+            "value": false,
+            "xtype": "enumtruefalsecombo",
+            "hiddenName": "settings[ssl]"
+        },
+        {
+            "name": "settings[user]",
+            "fieldLabel": "SMTP User",
+            "xtype": "textfield"
+        },
+        {
+            "name": "settings[password]",
+            "fieldLabel": "SMTP Password",
+            "xtype": "textfield",
+            "inputType": "password"
+        }
+    ]
+}

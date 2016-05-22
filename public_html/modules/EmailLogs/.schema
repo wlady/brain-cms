@@ -1,0 +1,13 @@
+DROP TABLE IF EXISTS `cms_email_logs`;
+CREATE TABLE IF NOT EXISTS `cms_email_logs` (
+  `fl_id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `form_id` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `fl_date` datetime NOT NULL,
+  `fl_subject` text COLLATE utf8_unicode_ci,
+  `fl_address_from` text COLLATE utf8_unicode_ci NOT NULL,
+  `fl_address_to` text COLLATE utf8_unicode_ci NOT NULL,
+  `fl_message` text COLLATE utf8_unicode_ci NOT NULL,
+  `fl_post` text COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`fl_id`),
+  KEY `f_id` (`form_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;

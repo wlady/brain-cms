@@ -1,0 +1,13 @@
+# behat.yml
+default:
+    extensions:
+        Behat\MinkExtension\Extension:
+            base_url: http://en.wikipedia.org
+            goutte: ~
+            selenium2: ~
+
+jenkins:
+    formatter:
+        name: pretty,junit
+        parameters:
+            output_path: ,xml

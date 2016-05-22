@@ -1,0 +1,14 @@
+DROP TABLE IF EXISTS `cms_forms`;
+CREATE TABLE IF NOT EXISTS `cms_forms` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `content` text COLLATE utf8_unicode_ci,
+  `fields` int(11) DEFAULT NULL,
+  `active` enum('true','false') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'true',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+CREATE OR REPLACE
+SQL SECURITY INVOKER
+VIEW cms_view_forms AS
+SELECT f.*,COUNT(fid) cnt FROM cms_forms f LEFT JOIN cms_form_fields ff ON f.id=ff.fform GROUP BY (f.id);

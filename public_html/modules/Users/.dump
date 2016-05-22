@@ -1,0 +1,8 @@
+INSERT INTO `cms_users` (`user_id`, `user_type`, `user_login`, `ug_id`, `user_name`, `user_password`, `user_last_login`, `user_email`, `user_registered`, `user_theme`, `user_editor`, `user_layout`, `user_iconsize`, `user_debug`, `user_customizable`, `user_active`) VALUES
+(1, 'Users', 'admin', 1, 'admin', '$2y$10$bqtP2xRr45g5YQ/ufe1OJ.ifIjI6Ss4plrEP1Wy1hncN/TZqdI2ki', NULL, 'example@example.com', NULL, 'bcms7', 'tinymce', 'bcms7', 64, 'true', 'true', 'true'),
+(2, 'Users', 'zeus', 3, 'zeus', '$2y$10$uDl9cgXYkzCdNHsXEkbtDuB0c7.uvFGJ4.Dz2shYCbmC8KNJ0VOZC', NULL, 'php@init-testing.konturlabs.com', NULL, 'bcms7', 'tinymce', 'bcms7', 64, 'true', 'true', 'true');
+
+INSERT INTO `cms_users_profiles` (`id`, `u_login`, `u_type`, `u_hash`, `u_settings`) VALUES
+(1, 'admin', 'Users', '909d42738699d66357926eea21d9348a', 'a:5:{s:10:"user_theme";s:5:"bcms7";s:11:"user_editor";s:7:"tinymce";s:11:"user_layout";s:5:"bcms7";s:13:"user_iconsize";s:2:"64";s:10:"user_debug";s:4:"true";}'),
+(2, 'zeus', 'Users', '232124a59d2b9529401b3f8d6cdc6bc0', 'a:5:{s:10:"user_theme";s:5:"bcms7";s:11:"user_editor";s:7:"tinymce";s:11:"user_layout";s:5:"bcms7";s:13:"user_iconsize";s:2:"64";s:10:"user_debug";s:5:"false";}');
+

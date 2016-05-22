@@ -1,0 +1,9 @@
+DROP TABLE IF EXISTS `cms_library_articles`;
+CREATE TABLE IF NOT EXISTS `cms_library_articles` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `alias` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `content` text COLLATE utf8_unicode_ci DEFAULT NULL,
+  `active` enum('true','false') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'true',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;

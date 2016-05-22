@@ -1,0 +1,15 @@
+DROP TABLE IF EXISTS `cms_mailchimp_members`;
+CREATE TABLE IF NOT EXISTS `cms_mailchimp_members` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `member` char(10) COLLATE utf8_unicode_ci NOT NULL,
+  `list` char(10) COLLATE utf8_unicode_ci NOT NULL,
+  `email` varchar(40) COLLATE utf8_unicode_ci NOT NULL,
+  `firstname` varchar(40) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `lastname` varchar(40) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `status` enum('subscribed','unsubscribed','cleaned') COLLATE utf8_unicode_ci NOT NULL,
+  `created` datetime NOT NULL,
+  `updated` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `list` (`list`),
+  KEY `member` (`member`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;

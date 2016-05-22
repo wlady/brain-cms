@@ -1,0 +1,38 @@
+@font-face {
+    font-family: 'Profile';
+    src: url('fonts/icomoon.eot?wkdop');
+    src: url('fonts/icomoon.eot?wkdop#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?wkdop') format('truetype'),
+    url('fonts/icomoon.woff?wkdop') format('woff'),
+    url('fonts/icomoon.svg?wkdop#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+[class^="Profile-"], [class*="Profile-"] {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'Profile' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+
+    /* Enable Ligatures ================ */
+    letter-spacing: 0;
+    -webkit-font-feature-settings: "liga";
+    -moz-font-feature-settings: "liga=1";
+    -moz-font-feature-settings: "liga";
+    -ms-font-feature-settings: "liga" 1;
+    -o-font-feature-settings: "liga";
+    font-feature-settings: "liga";
+
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.Profile-icon:before {
+    content: "\e900";
+}

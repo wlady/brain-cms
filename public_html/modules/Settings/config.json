@@ -1,0 +1,12 @@
+{
+    "Title": "Site Settings",
+    "Version": "7.0",
+    "Author": [
+        "Vladimir Zabara <wlady@od.bumpnetworks.com>"
+    ],
+    "Publisher": "Bump Networks, Inc",
+    "Release": "Thu 23 Jul 2015 01:24:26 PM EEST",
+    "Description": "Site Settings Module",
+    "Core": 1,
+    "Panel": "system"
+}

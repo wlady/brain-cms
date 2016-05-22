@@ -1,0 +1,16 @@
+<div id="dashboard" style="margin:20px">
+	<div class="helloTitle">{{ LABEL.welcome }} {{ CONFIG.SYSTEM }} {{ CONFIG.VERSION }}</div>
+	<div id="hello">{{ USERINFO|raw }}</div>
+	{% if DOCS and DOCS.dashboard %}
+	<div class="manualsList">
+		<div class="manualsTitle">Manuals, Docs &amp; Tutorials</div>
+		<ul>
+			{% for doc in DOCS.dashboard %}
+				{% if doc.link %}
+					<li><a href="{{ doc.link }}" target="_blank">{% if doc.title %}{{ doc.title }}{% else %}{{ doc.link }}{% endif %}</a></li>
+				{% endif %}
+			{% endfor %}
+		</ul>
+	</div>
+	{% endif %}
+</div>

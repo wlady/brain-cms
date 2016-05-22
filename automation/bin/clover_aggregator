@@ -1,0 +1,113 @@
+#!/usr/bin/php
+<?php
+
+include __DIR__ . '/../../engine/bootstrap.php';
+
+use Prewk\XmlStringStreamer;
+use Prewk\XmlStringStreamer\Stream\File;
+use Prewk\XmlStringStreamer\Parser\StringWalker;
+
+$usage = <<<EOUsage
+
+Usage: cover_agregator [options]
+
+Options are:
+    -i=dir               (requiered) where to seek coverage files
+    -o=filename          (optional) output results
+    -s                   (optional) skip package block in the final file
+    -q                   (optional) no output to displays
+
+EOUsage;
+
+function findFilesInDir($dir, &$files)
+{
+    $dir = new DirectoryIterator($dir);
+    foreach ($dir as $fileinfo) {
+        if ($fileinfo->isDir() && !$fileinfo->isDot()) {
+            findFilesInDir($fileinfo->getPathname(), $files);
+        } elseif (strtolower($fileinfo->getFilename()) === "clover.xml") {
+            array_push($files, $fileinfo->getPathname());
+        }
+    }
+}
+
+$shortopts = 'i:sqo::';
+$longopts = [];
+$files = [];
+$metricsAll = [];
+$xml = '';
+
+$options = getopt($shortopts, $longopts);
+
+if (empty($options['i'])) {
+    die($usage);
+}
+if (!is_dir($options['i'])) {
+    die($usage);
+}
+
+if (!empty($options['o'])) {
+    @unlink($options['o']);
+}
+
+findFilesInDir($options['i'], $files);
+
+if ($files) {
+    foreach ($files as $fn) {
+        $stream = new File($fn);
+        $parser = new StringWalker(array(
+            'extractContainer' => true
+        ));
+        $streamer = new XmlStringStreamer($parser, $stream);
+
+        while ($node = $streamer->getNode()) {
+            $simpleXmlNode = simplexml_load_string($node);
+            foreach ($simpleXmlNode->metrics->attributes() as $key => $valeu) {
+                if (array_key_exists($key, $metricsAll)) {
+                    $metricsAll[$key] += $valeu;
+                } else {
+                    $metricsAll[$key] = $valeu;
+                }
+            }
+
+            if (array_key_exists('s', $options)) {
+                foreach ($simpleXmlNode->package->file as $node => $file) {
+                    $xml .= "\n    " . $file->asXML();
+                }
+            } else {
+                $xml .= "\n    " . $simpleXmlNode->package->asXML();
+            }
+        }
+    }
+
+    $containingXml = $parser->getExtractedContainer();
+    if ($xmlObj = simplexml_load_string($containingXml)) {
+        $rootElementName = $xmlObj->getName();
+        $xml = '<' . $rootElementName . ">\n  <project>" . $xml;
+
+        $xml .= "\n    <metrics ";
+        foreach ($metricsAll as $key => $valeu) {
+            $xml .= $key . " = \"" . $valeu . "\" ";
+        }
+        $xml .= '/>';
+
+        $xml .= "\n  </project>";
+        $xml .= "\n</" . $rootElementName . ">";
+
+        if (empty($options['o']) && empty($options['q'])) {
+            echo $xml;
+        } elseif (!empty($options['o'])) {
+            $xml = simplexml_load_string($xml);
+            file_put_contents($options['o'], $xml->asXML());
+        }
+        $msg = "\nConversion was successful\n";
+    } else {
+        $msg = "\nSomething wrong\n";
+    }
+} else {
+    $msg = "\nNothing found\n";
+}
+
+if (!array_key_exists('q', $options)) {
+    echo $msg;
+}

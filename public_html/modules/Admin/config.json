@@ -1,0 +1,11 @@
+{
+    "Title": "Admin Module",
+    "Version": "7.0",
+    "Author": [
+        "Vladimir Zabara <wlady@od.bumpnetworks.com>"
+    ],
+    "Publisher": "Bump Networks, Inc",
+    "Release": "Thu 23 Jul 2015 01:21:50 PM EEST",
+    "Description": "Admin Module",
+    "Core": 1
+}

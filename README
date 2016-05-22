@@ -1,0 +1,42 @@
+Installation
+============
+
+1) create site root directory
+2) unpack bcms archive
+3) edit domain name in public_html/.htaccess file
+4)  run "ant tests" from console in development/staging/CI environment or
+4a) run "ant" in production environment
+5) open /installer/index.php in a browser and follow installation guides
+6) copy config.json file to config.local.json (for staging & development environment)
+
+BCMS 7.0
+========
+1) PHP 7 compatible
+2) Ext JS was updated to version 6.0.1
+3) Created new bcms7 layout which the responsive to mobile platforms. And have got new modules menu.
+4) Created new bmcs7 and bcms7-touch custom themes. Bcms7-touch has a larger size of the icons.
+5) Add support custom font-icons. All modules has own custom font-icons and style.css to change their.
+6) Removed old layouts and themes.
+7) Removed the use of *.png in the interface and adapted the interface to use font-icons.
+8) Add new component "responsivefieldset". It should be used to create new modules.
+9) ExtJS modules were refactored to been responsive to mobile platforms.
+10) New BCMS Shell 7 to create correct module stubs.
+
+BCMS 6.2
+========
+YAML config files were converted into JSON
+
+BCMS 6.1
+========
+
+1) Smarty was eliminated
+2) 'composer.lock' file is under SVN now. If you need to add some package you have to run
+   "composer require xxx/xxx; composer install --prefer-dist" by hands.
+
+BCMS 6.0
+========
+
+1) PHP classes were refactored to comply with PHP-FIG recommendations (PSR-1, PSR-2, PST-4).
+2) ExtJS modules were refactored as well. Files of every CMS module moved to its "ux" directory.
+3) New BCMS Shell 6 to create correct module stubs, tables etc.
+4) Site Tree module is removed.

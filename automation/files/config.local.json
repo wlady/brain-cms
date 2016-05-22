@@ -1,0 +1,72 @@
+{
+    "Title": "Bump CMS",
+    "Author": [
+        "Vladimir Zabara <wlady@od.bumpnetworks.com>"
+    ],
+    "Publisher": "Bump Networks, Inc.",
+    "Lang": "en",
+    "Version": "7.0",
+    "Debug": 0,
+    "MagicQuotes": 0,
+    "TimeZone": "UTC",
+    "Compression": 1,
+    "ErrorReporting": 3,
+    "Paths": {
+        "Engine": "/engine/",
+        "Modules": "/modules/",
+        "Templates": "/tpl/",
+        "UploadPath": "/userfiles/",
+        "ImagesDir": "/images/",
+        "FlashDir": "/flash/",
+        "FilesDir": "/files/",
+        "MediaDir": "/media/"
+    },
+    "Cache": "Memcached",
+    "Twig": {
+        "CacheDir": "/twig/",
+        "CacheTime": 120,
+        "CompileCheck": 1,
+        "ForceCompile": 0,
+        "Debug": 0
+    },
+    "CMSBase": "/admin/",
+    "CMSSSL": 0,
+    "Domain": "http://bcms70.%automation_server_domain%/",
+    "Base": "/",
+    "Origins": [
+        "http://bcms70.%automation_server_domain%/"
+    ],
+    "CDN": [
+        "http://cdn1.bcms63.%automation_server_domain%",
+        "http://cdn2.bcms63.%automation_server_domain%",
+        "http://cdn3.bcms63.%automation_server_domain%",
+        "http://cdn4.bcms63.%automation_server_domain%",
+        "http://cdn5.bcms63.%automation_server_domain%"
+    ],
+    "ExternalResources": [
+        {
+            "type": "style",
+            "url": "//code.jquery.com/ui/1.10.4/themes/redmond/jquery-ui.css"
+        },
+        {
+            "type": "script",
+            "url": "//code.jquery.com/jquery-1.11.0.min.js"
+        },
+        {
+            "type": "script",
+            "url": "//code.jquery.com/ui/1.10.4/jquery-ui.min.js"
+        }
+    ],
+    "DB": {
+        "Server": "localhost",
+        "Platform": "mysqli",
+        "User": "bcms70_user1",
+        "Password": "V_uLr_1Njzxd",
+        "Schema": "bcms70"
+    },
+    "AuthProviders": [
+        "Users",
+        "Fogbugz",
+        "Jira"
+    ]
+}

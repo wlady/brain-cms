@@ -1,0 +1,4 @@
+EmailLogs: "Sent EMails"
+from: "From"
+to: "To"
+print_emails: "Print Emails"

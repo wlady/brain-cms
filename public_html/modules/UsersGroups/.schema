@@ -1,0 +1,8 @@
+DROP TABLE IF EXISTS `cms_users_groups`;
+CREATE TABLE IF NOT EXISTS `cms_users_groups` (
+  `group_id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_group` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `user_level` int(11) NOT NULL DEFAULT '0',
+  `group_active` enum('true','false') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'true',
+  PRIMARY KEY (`group_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;

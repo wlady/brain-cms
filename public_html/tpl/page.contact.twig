@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>{{ meta.title }}</title>
+	<meta name="description" content="{{ meta.description }}" />
+	<meta name="keywords" content="{{ meta.keywords }}" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" type="text/css" href="{{ useCdns('/min/g=style') }}" />
+	{% include "include.external-resources.twig" %}
+	{% include "include.google-analytics.twig" %}
+</head>
+<body>
+
+	<div class="container">
+		<div class="form_contact">
+			{{ form|raw }}
+		</div>
+	</div>
+<script language="javascript" type="text/javascript" src="{{ useCdns('/min/g=utils') }}"></script>
+</body>
+</html>

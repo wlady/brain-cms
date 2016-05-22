@@ -1,0 +1,7 @@
+<project name="EmailForms" default="build" basedir=".">
+    <property name="type" value="module"/>
+    <property name="dir" value="${type}-${ant.project.name}"/>
+    <property name="dist" location="../../../../automation/reports"/>
+    <property name="vendor" location="../../../../vendor"/>
+    <import file="${dist}/common.xml" />
+</project>

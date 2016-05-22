@@ -1,0 +1,6 @@
+SeoMetaDatasFields: "SEO Meta Data Fields"
+xtype: "Type"
+xname: "Name"
+xlabel: "Label"
+xvalue: "Value"
+editable: "Editable"

@@ -1,0 +1,6 @@
+UsersWhitelist: "Users Whitelist"
+UsersWhitelist_info: "Users Whitelist Info"
+UsersWhitelist_editor: "Users Whitelist Editor"
+id: "ID"
+u_login: "Login"
+u_type: "Type"

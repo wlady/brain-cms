@@ -1,0 +1,20 @@
+.plupload_iconAdd {
+	background-image:url(/modules/Admin/ux/upload/images/upload_add.png) !important;
+}
+
+.plupload_iconUpload {
+	background-image:url(/modules/Admin/ux/upload/images/upload_upload.png) !important;
+}
+
+.plupload_iconCancel {
+	background-image:url(/modules/Admin/ux/upload/images/upload_cancel.png) !important;
+}
+
+.plupload_iconClear {
+	background-image:url(/modules/Admin/ux/upload/images/upload_clear.png) !important;
+}
+
+.plupload_iconOptions {
+	background-image:url(/modules/Admin/ux/upload/images/upload_options.png) !important;
+}
+

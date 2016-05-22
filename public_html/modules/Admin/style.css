@@ -1,0 +1,316 @@
+.btn-reload {
+	background-image:url(img/menu/reload.png) !important;
+}
+.btn-reset {
+	background-image:url(img/menu/reset.png) !important;
+}
+.btn-login {
+	background-image:url(img/key.png) !important;
+}
+.x-login {
+	background-image:url(img/lock.png);
+}
+.x-menu-item-close-this{
+	background-image:url(img/menu/tab_close_this.png) !important;
+}
+.x-menu-item-close-others{
+	background-image:url(img/menu/tab_close_others.png) !important;
+}
+.x-menu-item-close-all{
+	background-image:url(img/menu/tab_remove.png) !important;
+}
+.nodeLocked {
+	background-image:url(img/folderLocked.png) !important;
+}
+.nodeClosed {
+	background-image:url(img/folderClosed.gif) !important;
+}
+.nodeOpened {
+	background-image:url(img/folderOpen.gif) !important;
+}
+.redirectIcon {
+	background-image:url(img/page_redirect.png) !important;
+}
+.contentIcon {
+	background-image:url(img/page_content.png) !important;
+}
+.linkIcon {
+	background-image:url(img/page_link.png) !important;
+}
+.generatedIcon {
+	background-image:url(img/page_generated.png) !important;
+}
+.httpsIcon {
+	background-image:url(img/page_https.png) !important;
+}
+.exit {
+	background-image:url(img/menu/exit.png) !important;
+}
+.bumpLogo {
+	background-image:url(img/menu/bumplogo16.png) !important;
+}
+.defaultIcon {
+	background-image:url(img/menu/default.png) !important;
+}
+.actions {
+	background-image:url(img/menu/actions.png) !important;
+}
+.edit {
+	background-image:url(img/menu/edit.png) !important;
+}
+.add {
+	background-image:url(img/menu/add.png) !important;
+}
+.view {
+	background-image:url(img/menu/view.png) !important;
+}
+.system {
+	background-image:url(img/menu/system.png) !important;
+}
+.export {
+	background-image:url(img/menu/export.png) !important;
+}
+.copy {
+	background-image:url(img/menu/copy.png) !important;
+}
+.paste {
+	background-image:url(img/menu/paste.png) !important;
+}
+.del {
+	background-image:url(img/menu/delete.png) !important;
+}
+.purge {
+	background-image:url(img/menu/purge.png) !important;
+}
+.reload {
+	background-image:url(img/menu/reload.png) !important;
+}
+.reset {
+	background-image:url(img/menu/reset.png) !important;
+}
+.upload {
+	background-image:url(img/menu/upload.png) !important;
+}
+.download {
+	background-image:url(img/menu/download.png) !important;
+}
+.compress {
+	background-image:url(img/menu/compress.png) !important;
+}
+.quicklinks {
+	background-image:url(img/menu/qlinks.png) !important;
+}
+.browse {
+	background-image:url(img/menu/browse.png) !important;
+}
+.link {
+	background-image:url(img/menu/link.png) !important;
+}
+.print {
+	background-image:url(img/menu/printer.png) !important;
+}
+.playback {
+	background-image:url(img/menu/playback.png) !important;
+}
+.tablerows {
+	background-image:url(img/menu/show_table_row.png) !important;
+}
+.save {
+	background-image:url(img/menu/save.png) !important;
+}
+.save_exit {
+	background-image:url(img/menu/tick.png) !important;
+}
+.close {
+	background-image:url(img/menu/cross.png) !important;
+}
+.stop {
+	background-image:url(img/menu/stop.png) !important;
+}
+.plus {
+	background-image:url(img/menu/plus.png) !important;
+}
+.minus {
+	background-image:url(img/menu/minus.png) !important;
+}
+.find {
+	background-image:url(img/find.gif) !important;
+}
+.checked {
+	background-image:url(img/menu/checked.png) !important;
+}
+.unchecked {
+	background-image:url(img/menu/unchecked.png) !important;
+}
+.whitelist {
+    background-image:url(img/menu/whitelist.png) !important;
+}
+.sync {
+    background-image:url(img/menu/reload.png) !important;
+}
+.preferences {
+background-image:url(img/preferences.png) !important;
+}
+.blank {
+background-image:none !important;
+}
+.pdf {
+background-image:url(img/pdf.png) !important;
+}
+#loading-mask{
+	position:absolute;
+	left:0;
+	top:0;
+	width:100%;
+	height:100%;
+	z-index:20000;
+	background-color:#fff;
+}
+#loading{
+	position:absolute;
+	left:45%;
+	top:50%;
+	padding:2px;
+	z-index:20001;
+	height:auto;
+}
+
+.modulesHolder   {
+margin: 10px;
+font-weight:bold;
+}
+.modulesHolder ul {
+padding:0;
+margin:0;
+}
+.modulesHolder ul li  {
+list-style-type: none;
+}
+#hello {
+text-decoration:none;
+text-align:left;
+display:block;
+background-position: left center;
+background-repeat:no-repeat;
+border:0pt none;
+padding:5px 0 0 40px;
+margin: 10px;
+height:32px;
+line-height:22px;
+font-size: 100%;
+}
+.helloTitle {
+color:#215d90;
+font-family:tahoma;
+font-size:24px;
+font-weight:bold;
+padding:0 0 20px 0;
+}
+.manualsList {
+padding: 20px;
+}
+.manualsTitle {
+color:#215d90;
+font-size: 20px;
+font-weight: normal;
+}
+.manualsList li {
+padding: 2px;
+}
+.ux-auth-warning {
+	background: white url(lib/ext/resources/themes/images/default/shared/warning.gif) no-repeat 8px center;
+	padding: 5px !important;
+	padding-left:30px !important;
+	font-weight:bold;
+}
+.msg .x-box-mc {
+	font-size:14px;
+}
+#msg-div {
+	position:absolute;
+	left:50%;
+	top:10px;
+	width:400px;
+	margin-left:-200px;
+	z-index:20000;
+}
+#msg-div .msg {
+	border-radius: 8px;
+	-moz-border-radius: 8px;
+	background: #F6F6F6;
+	border: 2px solid #ccc;
+	margin-top: 2px;
+	padding: 10px 15px;
+	color: #555;
+}
+#msg-div .msg h3 {
+	margin: 0 0 8px;
+	font-weight: bold;
+	font-size: 15px;
+	color: #FF0000;
+}
+#msg-div .msg p {
+	margin: 0;
+}
+.pointer {
+	cursor: pointer;
+}
+.x-action-col-icon {
+	width: 16px;
+	height: 16px;
+	cursor: pointer;
+}
+.x-message-box {
+	z-index: 500000 !important;
+}
+#sb-container {
+	z-index: 900000 !important;
+}
+#sb-body, #sb-loading {
+	background-color: #ccc !important;
+}
+#sb-player.html {
+	overflow: visible !important;
+}
+#sb-wrapper-inner {
+	padding:1px !important;
+	border-color: #aaa !important;
+}
+#sb-title-inner, #sb-info-inner, #sb-loading-inner, div.sb-message {
+	color: #000 !important;
+}
+#canvas-color-picker {
+	cursor: crosshair;
+}
+.currentColor {
+	background: none;
+	border: 1px solid #000;
+	background-color: #fff;
+}
+.helpMessage {
+	padding: 10px 0;
+	font-weight: bold;
+}
+.checkboxgroup-item {
+	width: 25%;
+	float: left;
+}
+.x-column-header-text {
+  white-space: nowrap;
+  background-repeat: no-repeat;
+  zoom: 1;
+  display: inline;
+}
+
+.required-field label > span::after {
+    color: red;
+    font-size: 18px;
+    position: relative;
+    top: 0px;
+    content: "*";
+}
+
+.x-fieldset-header-tool-default.x-focus {
+	outline: 1px solid red;
+	outline: none;
+}

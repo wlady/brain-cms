@@ -1,0 +1,13 @@
+DROP TABLE IF EXISTS `cms_modules`;
+CREATE TABLE IF NOT EXISTS `cms_modules` (
+  `m_id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `m_name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `m_path` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `m_panel` enum('dashboard','content','system','routing','hidden') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'hidden',
+  `m_description` text COLLATE utf8_unicode_ci NOT NULL,
+  `m_settings` text COLLATE utf8_unicode_ci NOT NULL,
+  `m_levels` set('0','10','30','50','100','1000') COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  `m_order` int(11) NOT NULL DEFAULT '0',
+  `m_active` enum('true','false') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'true',
+  PRIMARY KEY (`m_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;

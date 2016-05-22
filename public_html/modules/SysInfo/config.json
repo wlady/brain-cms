@@ -1,0 +1,27 @@
+{
+    "Title": "System Information",
+    "Version": "7.0",
+    "Author": [
+        "Vladimir Zabara <wlady@od.bumpnetworks.com>"
+    ],
+    "Publisher": "Bump Networks, Inc",
+    "Release": "Thu 23 Jul 2015 01:24:33 PM EEST",
+    "Description": "This module shows misc system information",
+    "Panel": "system",
+    "Settings": [
+        {
+            "name": "settings[phpinfo]",
+            "fieldLabel": "PHP Info",
+            "value": "true",
+            "xtype": "enumtruefalsecombo",
+            "hiddenName": "settings[phpinfo]"
+        },
+        {
+            "name": "settings[resolve]",
+            "fieldLabel": "DNS resolve",
+            "value": "false",
+            "xtype": "enumtruefalsecombo",
+            "hiddenName": "settings[resolve]"
+        }
+    ]
+}

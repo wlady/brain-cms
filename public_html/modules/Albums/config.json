@@ -1,0 +1,26 @@
+{
+    "Title": "Albums Manager",
+    "Version": "7.0",
+    "Author": [
+        "Vladimir Zabara <wlady@od.bumpnetworks.com>"
+    ],
+    "Publisher": "Bump Networks, Inc",
+    "Release": "Thu 23 Jul 2015 01:21:58 PM EEST",
+    "Description": "Albums Manager",
+    "Panel": "content",
+    "Settings": [
+        {
+            "name": "settings[dnd]",
+            "fieldLabel": "Drag-n-Drop Enabled",
+            "value": "true",
+            "xtype": "enumtruefalsecombo",
+            "hiddenName": "settings[dnd]"
+        },
+        {
+            "name": "settings[youtube]",
+            "fieldLabel": "Youtube API key",
+            "value": "AIzaSyA5UNwVSRhlYVlIbq9iSpD8JJEEhRs-6hs",
+            "xtype": "textfield"
+        }
+    ]
+}

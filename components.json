@@ -1,0 +1,21 @@
+{
+    "components": [
+        {
+            "name": "BCMS Shell",
+            "version": "6.1",
+            "url": "http://www.bumpnetworks.com"
+        },{
+            "name": "ExtJS",
+            "version": "6.0.1",
+            "url": "http://www.sencha.com"
+        },{
+            "name": "TinyMCE",
+            "version": "4.3.8",
+            "url": "http://www.tinymce.com"
+        },{
+            "name": "phpThumb",
+            "version": "1.7.11",
+            "url": "http://phpthumb.sourceforge.net"
+        }
+    ]
+}

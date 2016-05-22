@@ -1,0 +1,9 @@
+<script type="text/javascript">
+	Ext.onReady(function() {
+		Ext.each(App.modulesQueue, function(item) {
+			if (item.autoRun) {
+				Ext.create(item.component, item.config || { });
+			}
+		});
+	});
+</script>

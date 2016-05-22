@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>BCMS Login Page</title>
+    <base href="{{ constant('BASE') }}modules/Admin/"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta http-equiv="Author" content="{{ constant('AUTHOR') }}"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link rel="shortcut icon" href="favicon.ico" type="image/vnd.microsoft.icon"/>
+    <script type="text/javascript" src="{{ constant('CMSBASE') }}?get=lang"></script>
+    <script type="text/javascript" src="lib/ext/ext-bootstrap.js"></script>
+    <script type="text/javascript">
+        Ext.ns('App');
+        App.baseUrl = '{{ constant('CMSBASE') }}';
+        Ext.Loader.setConfig({
+            disableCaching: false,
+            enabled: true
+        });
+        Ext.onReady(function () {
+            frm = Ext.create('Ext.form.Panel', {
+                contentEl: 'frmLogin'
+            });
+            if (!Ext.get('email').dom.value) {
+                Ext.get('email').focus();
+            } else {
+                Ext.get('_submit').focus();
+            }
+        });
+
+        function submitForm() {
+            Ext.getBody().addCls('busy');
+            Ext.Ajax.request({
+                url: App.baseUrl,
+                params: {
+                    _m: 'Auth',
+                    _a: 'auth',
+                    login: Ext.get('email').dom.value,
+                    password: Ext.get('password').dom.value
+                },
+                success: function (result, request) {
+                    try {
+                        var response = Ext.decode(result.responseText);
+                        if (!response.success) {
+                            Ext.getBody().removeCls('busy');
+                            alert(__.register_err);
+                        } else {
+                            Ext.getBody().removeCls('busy');
+                            document.location.reload(true);
+                            return false;
+                        }
+                    } catch (e) {
+                        Ext.getBody().removeCls('busy');
+                        alert(result.responseText);
+                    }
+                    Ext.get('email').focus();
+                }
+            });
+            return false;
+        }
+
+        function resetForm() {
+            Ext.get('email').dom.value = '';
+            Ext.get('password').dom.value = '';
+        }
+    </script>
+    <link href="login.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<section id="popup" class="auth-form">
+    <div class="table auth-form-wrapper">
+        <div class="logo-wrapper table-cell">
+            <img src="img/logo-small-blue.svg"/>
+        </div>
+
+        <div class="auth-form-content table-cell">
+            <h1>BCMS Development</h1>
+            <form id="frmLogin" method="POST" action="" onsubmit="return submitForm();">
+                <div class="form-group group">
+                    <label>Username:</label>
+                    <input tabindex="1" type="text" name="email" id="email"/>
+                </div>
+                <div class="form-group group">
+                    <label>Password:</label>
+                    <input tabindex="2" type="password" name="password" id="password"/>
+                </div>
+
+                <div id="btns" class="button-group">
+                    <input tabindex="4" type="reset" value="Reset" id="flReset" onclick="resetForm()"/>
+                    <input tabindex="3" type="submit" id="_submit" value="Login"/>
+                </div>
+            </form>
+        </div>
+    </div>
+    <footer class="dialog-footer">
+        <div id="version">{{ constant('SYSTEM') }} {{ constant('VERSION') }}</div>
+    </footer>
+</section>
+</body>
+</html>

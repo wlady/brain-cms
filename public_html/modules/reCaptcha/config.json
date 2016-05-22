@@ -1,0 +1,32 @@
+{
+    "Title": "reCaptcha",
+    "Version": "7.0",
+    "Author": [
+        "Maksym Aksentiev <maksym@od.bumpnetworks.com>"
+    ],
+    "Publisher": "Bump Networks, Inc",
+    "Release": "Thu 23 Jul 2015 01:25:25 PM EEST",
+    "Description": "reCaptcha",
+    "ExternalResources": [
+        {
+            "type": "script",
+            "url": "\/\/www.google.com\/recaptcha\/api.js?onload=gRecaptchaCallback&render=explicit"
+        },
+        {
+            "type": "script",
+            "url": "\/modules\/reCaptcha\/js\/captcha.js"
+        }
+    ],
+    "Settings": [
+        {
+            "name": "settings[site_key]",
+            "fieldLabel": "Site Key",
+            "xtype": "textfield"
+        },
+        {
+            "name": "settings[secret_key]",
+            "fieldLabel": "Secret Key",
+            "xtype": "textfield"
+        }
+    ]
+}

@@ -1,0 +1,12 @@
+--- vendor/mrclay/minify/min/groupsConfig.php   original
++++ vendor/mrclay/minify/min/groupsConfig.php   custom
+@@ -11,6 +11,8 @@
+  * See http://code.google.com/p/minify/wiki/CustomSource for other ideas
+  **/
+ 
++return require OWNDIR.'/min/groupsConfig.php';
++
+ return array(
+     // 'js' => array('//js/file1.js', '//js/file2.js'),
+     // 'css' => array('//css/file1.css', '//css/file2.css'),
+

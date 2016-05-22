@@ -1,0 +1,11 @@
+---
+single_integer: 3
+single_float: 3.3
+simple_array:
+  - "1"
+  - "2"
+  - "3"
+key_value_array:
+  foo_key: foo_value
+  bar_key: bar_value
+  baz_key: baz_value

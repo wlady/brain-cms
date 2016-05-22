@@ -1,0 +1,17 @@
+DROP TABLE IF EXISTS `cms_email_forms`;
+CREATE TABLE IF NOT EXISTS `cms_email_forms` (
+  `f_id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `f_form` int(11) DEFAULT NULL,
+  `f_updated` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `f_template` text COLLATE utf8_unicode_ci,
+  `f_name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `f_title` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `f_to` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `f_cc` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `f_subject` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `f_reply_subject` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `f_reply_content` text COLLATE utf8_unicode_ci,
+  `f_logging` enum('true','false') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'true',
+  `f_active` enum('true','false') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'true',
+  PRIMARY KEY (`f_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;

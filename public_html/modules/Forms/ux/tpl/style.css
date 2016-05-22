@@ -1,0 +1,38 @@
+@font-face {
+    font-family: 'Forms';
+    src: url('fonts/icomoon.eot?mjs19f');
+    src: url('fonts/icomoon.eot?mjs19f#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?mjs19f') format('truetype'),
+    url('fonts/icomoon.woff?mjs19f') format('woff'),
+    url('fonts/icomoon.svg?mjs19f#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+[class^="Forms-"], [class*=" Forms-"] {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'Forms' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+
+    /* Enable Ligatures ================ */
+    letter-spacing: 0;
+    -webkit-font-feature-settings: "liga";
+    -moz-font-feature-settings: "liga=1";
+    -moz-font-feature-settings: "liga";
+    -ms-font-feature-settings: "liga" 1;
+    -o-font-feature-settings: "liga";
+    font-feature-settings: "liga";
+
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.Forms-icon:before {
+    content: "\e900";
+}

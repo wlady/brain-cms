@@ -1,0 +1,11 @@
+{
+    "Title": "SEO Meta Data Fields",
+    "Version": "7.0",
+    "Author": [
+        "Vladimir Zabara <wlady@od.bumpnetworks.com>"
+    ],
+    "Publisher": "Bump Networks, Inc",
+    "Release": "Thu 23 Jul 2015 01:24:18 PM EEST",
+    "Description": "SEO Meta Data Fields",
+    "Depends": "SeoMetaDatas"
+}

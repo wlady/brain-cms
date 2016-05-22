@@ -1,0 +1,23 @@
+{
+    "Title": "Mailchimp",
+    "Version": "7.0",
+    "Author": [
+        "Maksym Aksentiev <maksym@od.bumpnetworks.com>"
+    ],
+    "Publisher": "Bump Networks, Inc",
+    "Release": "Mon, 23 Mar 2015 14:21:45 +0000",
+    "Description": "Mailchimp",
+    "Panel": "content",
+    "Settings": [
+        {
+            "name": "settings[api_key]",
+            "fieldLabel": "API Key",
+            "xtype": "textfield"
+        },
+        {
+            "name": "settings[active_list_id]",
+            "fieldLabel": "Active List ID",
+            "xtype": "textfield"
+        }
+    ]
+}

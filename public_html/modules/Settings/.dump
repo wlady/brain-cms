@@ -1,0 +1,15 @@
+INSERT INTO `cms_config_groups` (`g_id`, `g_name`) VALUES
+(1, 'Site settings'),
+(2, 'CMS Settings'),
+(3, 'SEO');
+
+INSERT INTO `cms_configs` (`g_id`, `type`, `name`, `value`, `editable`, `empty`, `teaser`, `description`) VALUES
+(1, 'boolean', 'ALLOWACCESS', 'false', 'false', 'false', 'Site is Active', ''),
+(1, 'string', 'SITENAME', 'BCMS Development', 'true', 'false', 'Site Name', ''),
+(1, 'string', 'CODEPAGE', 'utf-8', 'false', 'false', 'Default Charset', ''),
+(1, 'string', 'SSLBASEURL', '', 'true', 'true', 'HTTPS Base URL', ''),
+(1, 'email', 'MAILROOT', 'php@unit-testing.konturlabs.com', 'true', 'false', 'Administrator''s EMail', ''),
+(1, 'boolean', 'SHOWCREDENTIALS', 'false', 'false', 'true', 'Show BumpCMS Credentials', ''),
+(1, 'numeric', 'PICMAXWIDTH', '1024', 'true', 'false', 'Resize images on upload to this width', ''),
+(3, 'string', 'GOOGLEANALYTICS', '', 'true', 'false', 'Google Analytics Account', ''),
+(3, 'boolean', 'MATHTAG', 'false', 'true', 'false', 'Use MathTag Scripts', '');

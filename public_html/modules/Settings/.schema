@@ -1,0 +1,24 @@
+DROP TABLE IF EXISTS `cms_config_groups`;
+CREATE TABLE IF NOT EXISTS `cms_config_groups` (
+  `g_id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `g_name` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  PRIMARY KEY (`g_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+DROP TABLE IF EXISTS `cms_configs`;
+CREATE TABLE IF NOT EXISTS `cms_configs` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `g_id` bigint(20) NOT NULL DEFAULT '0',
+  `type` enum('string','numeric','boolean','email','percents','multiselect') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'string',
+  `name` varchar(32) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `value` varchar(128) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `editable` enum('true','false') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'true',
+  `empty` enum('true','false') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'false',
+  `teaser` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `description` text COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `g_id` (`g_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+ALTER TABLE `cms_configs`
+  ADD CONSTRAINT `cms_config_ibfk_1` FOREIGN KEY (`g_id`) REFERENCES `cms_config_groups` (`g_id`) ON DELETE CASCADE;

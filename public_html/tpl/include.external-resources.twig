@@ -1,0 +1,12 @@
+{% if config.external %}
+{% if config.external.style %}
+{% for resource in config.external.style %}
+<link rel="stylesheet" type="text/css" href="{{ resource.url }}" />
+{% endfor %}
+{% endif %}
+{% if config.external.script %}
+{% for resource in config.external.script %}
+<script type="text/javascript" src="{{ resource.url }}" {{ resource.attrs }}></script>
+{% endfor %}
+{% endif %}
+{% endif %}

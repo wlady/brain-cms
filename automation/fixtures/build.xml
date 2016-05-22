@@ -1,0 +1,119 @@
+<project name="DB Tasks" default="build">
+    <echo>${ant.project.name}</echo>
+    <property name="executable-mysql" value="mysql" />
+    <property name="executable-php" value="php" />
+
+    <target name="read-config" description="bl">
+        <exec executable="${executable-php}">
+            <arg value="props.php"/>
+        </exec>
+        <property file=".properties"/>
+    </target>
+
+    <target name="check-tables" description="Check tables" depends="read-config">
+        <exec executable="${executable-mysql}" outputProperty="db.may_clean_tables">
+            <arg value="--login-path=${db.user}"/>
+            <arg value="-N"/>
+            <arg value="-eSELECT IF(count(*) > 0, '1', '0') FROM information_schema.tables WHERE table_schema = '${db.schema}';"/>
+        </exec>
+
+        <condition property="db.can_clean_tables">
+            <equals arg1="${db.may_clean_tables}" arg2="1"/>
+        </condition>
+    </target>
+
+    <target name="check-views" description="Check views" depends="read-config">
+        <exec executable="${executable-mysql}" outputProperty="db.may_clean_views">
+            <arg value="--login-path=${db.user}"/>
+            <arg value="-N"/>
+            <arg value="-eSELECT IF(count(*) > 0, '1', '0') FROM information_schema.views WHERE table_schema = '${db.schema}';"/>
+        </exec>
+
+        <condition property="db.can_clean_views">
+            <equals arg1="${db.may_clean_views}" arg2="1"/>
+        </condition>
+    </target>
+
+
+    <target name="db-clean-views" description="Drop all views from database" depends="read-config, check-views" if="db.can_clean_views">
+
+        <property name="sql.clean" value="
+            SET FOREIGN_KEY_CHECKS = 0;
+            SET SESSION group_concat_max_len = 102400;
+
+            SET @views = null;
+            SELECT GROUP_CONCAT(table_schema, '.', table_name) INTO @views
+                FROM information_schema.views
+                WHERE table_schema = '${db.schema}';
+            SET @views = CONCAT('DROP VIEW ', @views);
+            PREPARE stmt FROM @views;
+            EXECUTE stmt;
+            DEALLOCATE PREPARE stmt;
+
+            SET FOREIGN_KEY_CHECKS = 1;
+        "/>
+
+        <exec executable="${executable-mysql}">
+            <arg value="--login-path=${db.user}"/>
+            <arg value="-e${sql.clean}"/>
+        </exec>
+
+    </target>
+
+    <target name="db-clean-tables" description="Drop all tables from database" depends="read-config, check-tables" if="db.can_clean_tables">
+        <property name="sql.clean" value="
+            SET FOREIGN_KEY_CHECKS = 0;
+            SET SESSION group_concat_max_len = 102400;
+
+            SET @tables = null;
+            SELECT GROUP_CONCAT(table_schema, '.', table_name) INTO @tables
+                FROM information_schema.tables
+                WHERE table_schema = '${db.schema}';
+            SET @tables = CONCAT('DROP TABLE ', @tables);
+            PREPARE stmt FROM @tables;
+            EXECUTE stmt;
+            DEALLOCATE PREPARE stmt;
+
+            SET FOREIGN_KEY_CHECKS = 1;
+        "/>
+
+        <exec executable="${executable-mysql}">
+            <arg value="--login-path=${db.user}"/>
+            <arg value="-e${sql.clean}"/>
+        </exec>
+    </target>
+
+    <target name="db-clean" description="Drop all views and tables">
+        <antcall target="db-clean-views"/>
+        <antcall target="db-clean-tables"/>
+    </target>
+
+    <target name="db-generate" description="Generate dump files">
+        <echo>Generate dump files</echo>
+        <exec executable="../../bcmsshell">
+            <arg line="gather"/>
+        </exec>
+    </target>
+
+    <target name="db-schema-init" description="Initialize database schema using bumpcms_schema.sql"
+            depends="read-config">
+        <exec executable="${executable-mysql}" failonerror="true" input="bumpcms_schema.sql">
+            <arg value="--login-path=${db.user}"/>
+            <arg value="-D${db.schema}"/>
+        </exec>
+    </target>
+
+    <target name="db-load-dump" description="Load test data from bumpcms_dump.sql" depends="read-config">
+        <exec executable="${executable-mysql}" failonerror="true" input="bumpcms_dump.sql">
+            <arg value="--login-path=${db.user}"/>
+            <arg value="-D${db.schema}"/>
+        </exec>
+    </target>
+
+    <target name="build" description="Reset database">
+        <antcall target="db-clean"/>
+        <antcall target="db-generate"/>
+        <antcall target="db-schema-init"/>
+        <antcall target="db-load-dump"/>
+    </target>
+</project>

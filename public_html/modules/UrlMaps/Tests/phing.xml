@@ -1,0 +1,11 @@
+<project name="UrlMaps" default="phpunit">
+    <property name="dist" value="../../../../automation/reports"/>
+    <property name="dir" value="module-UrlMaps"/>
+    <property name="vendor" value="../../../../vendor"/>
+    <target name="phpunit">
+        <phpunitreport infile="${dist}/${dir}/unitreport.xml"
+            styledir="${vendor}/phing/phing/etc"
+            format="noframes"
+            todir="${dist}/${dir}/junit-report"/>
+    </target>
+</project>

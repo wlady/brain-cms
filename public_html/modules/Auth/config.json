@@ -1,0 +1,11 @@
+{
+    "Title": "Authentication Module",
+    "Version": "7.0",
+    "Author": [
+        "Vladimir Zabara <wlady@od.bumpnetworks.com>"
+    ],
+    "Publisher": "Bump Networks, Inc",
+    "Release": "Thu 23 Jul 2015 01:22:08 PM EEST",
+    "Description": "Authentication Module",
+    "Core": 1
+}

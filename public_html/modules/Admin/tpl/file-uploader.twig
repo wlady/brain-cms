@@ -1,0 +1,11 @@
+Ext.onReady(function() {
+App.max_file_size = Ext.ux.Utils.uploaderFileSize('{{ SETTINGS.maxFileSize }}');
+App.uploadDir = '{{ constant('UPLOADPATH') }}';
+App.imagesDir = '{{ constant('IMG_DIR') }}';
+App.docsDir = '{{ constant('DOCS_DIR') }}';
+App.flashDir = '{{ constant('FLASH_DIR') }}';
+App.picsExtentions = '{{ SETTINGS.picsExtentions }}';
+App.flashExtentions = '{{ SETTINGS.flashExtentions }}';
+App.docsExtentions = '{{ SETTINGS.docsExtentions }}';
+App.mediaExtentions = '{{ SETTINGS.mediaExtentions }}';
+});

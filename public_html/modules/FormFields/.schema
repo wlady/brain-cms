@@ -1,0 +1,13 @@
+DROP TABLE IF EXISTS `cms_form_fields`;
+CREATE TABLE IF NOT EXISTS `cms_form_fields` (
+  `fid` int(11) NOT NULL AUTO_INCREMENT,
+  `fform` int(11) NOT NULL,
+  `fname` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `ftype` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `fempty` enum('true','false') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'true',
+  `fdefault` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`fid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+ALTER TABLE `cms_form_fields`
+  ADD CONSTRAINT `cms_form_fields_ibfk_1` FOREIGN KEY (`fform`) REFERENCES `cms_forms` (`id`) ON DELETE CASCADE;

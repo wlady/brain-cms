@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>{{ constant('SYSTEM') }} {{ constant('VERSION') }}</title>
+    <base href="{{ constant('BASE') }}modules/Admin/"/>
+    <meta http-equiv="Author" content="{{ constant('AUTHOR') }}"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="favicon.ico" type="image/vnd.microsoft.icon"/>
+
+    {% for module in ALL_USER_MODULES %}
+        <link rel="stylesheet" type="text/css"
+              href="{{ constant('BASE') }}modules/{{ module.Path }}/ux/tpl/style.css"/>
+    {% endfor %}
+
+    {% include "header-resources.twig" %}
+    <script type="text/javascript" src="{{ constant('CMSBASE') }}generate/lng"></script>
+    {% include "system.twig" %}
+
+    <script type="text/javascript">
+        Ext.ns('App');
+        App.baseUrl = '{{ constant('CMSBASE') }}';
+        Ext.onReady(
+                function () {
+                    Ext.ux.Utils.init();
+                    App.curTheme.setValue('{{ CONFIG.currentUser.user_theme }}');
+                    App.wisywygEditor = '{{ CONFIG.currentUser.user_editor }}';
+                    treeStore = [];
+                    children = [];
+                    {% for panel in PANELS %}
+                    {% if panel.group != 'dashboard' and panel.group != 'hidden' %}
+                    {% for module in panel.modules %}
+                    children.push({
+                        text : '{{ module.name }}',
+                        path : '{{ module.path }}',
+                        iconCls : '{{ module.icon }}' + '-icon menu-size',
+                        icon : '{{ module.icon }}',
+                        leaf : true
+                    });
+                    {% endfor %}
+                    treeStore.push({
+                        id : 'holder_' + '{{ panel.group }}',
+                        text : '{{ panel.title }}',
+                        iconCls : 'holder-' + '{{ panel.group }} menu-holder-size',
+                        expanded : Ext.isEmpty(treeStore) ? true : false,
+                        selectable : false,
+                        children : children
+                    });
+                    children = [];
+                    {% endif %}
+                    {% endfor %}
+                    Ext.create('Ext.ux.layouts.bcms7.layout');
+                }
+        );
+        {% include "file-uploader.twig" %}
+    </script>
+    {% include "editors.twig" %}
+    <link rel="stylesheet" type="text/css" href="{{ constant('CMSBASE') }}generate/css"/>
+    <script type="text/javascript" src="{{ constant('CMSBASE') }}generate/js"></script>
+    {% for resource in RESOURCES.bottom %}{{ resource|raw }}{% endfor %}
+</head>
+
+<body>
+<div id="loading-mask" style=""></div>
+<div id="loading">
+    <div class="loading-indicator"><img src="img/preloader.gif" width="64" height="64" style="margin-right:8px;"
+                                        align="absmiddle"/>
+    </div>
+</div>
+
+<div style="display:none;">
+    {% for addition in ADDITIONS %}{{ addition|raw }}{% endfor %}
+    {% include "dashboard.twig" %}
+</div>
+{% include "addition-js.twig" %}
+</body>
+</html>

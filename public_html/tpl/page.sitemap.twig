@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>{{ meta.title }}</title>
+<meta name="description" content="{{ meta.description }}" />
+<meta name="keywords" content="{{ meta.keywords }}" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="{{ useCdns('/min/g=style') }}" />
+{% include "include.external-resources.twig" %}
+{{ subheaders }}
+{% include "include.google-analytics.twig" %}
+</head>
+<body>
+	<div class="container">
+		{% if page.p_title %}<h1>{{ page.p_title }}</h1>{% endif %}
+		<div class="txt" id="{{ page.p_slug }}">
+			{{ page.p_content }}
+			<div class="sitemap">
+			{{ recursiveArray({array: sitemap}) }}
+			</div>
+		</div>
+	</div>
+</body>
+</html>

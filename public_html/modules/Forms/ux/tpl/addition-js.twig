@@ -1,0 +1,7 @@
+Ext.ns('App.Forms');
+App.Forms.ftypesDS = new Ext.data.ArrayStore({
+idIndex: 0,
+fields: ['id', 'text'],
+data: {{ data|raw }}
+});
+App.modulesQueue.push({ module: 'Forms', component: 'module.Forms.ux.Grid', config: {} });

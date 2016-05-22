@@ -1,0 +1,18 @@
+DROP TABLE IF EXISTS `cms_pictures`;
+CREATE TABLE IF NOT EXISTS `cms_pictures` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `album_id` int(10) unsigned NOT NULL,
+  `external` enum('true','false') COLLATE utf8_unicode_ci DEFAULT 'false',
+  `video_code` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `icon` text COLLATE utf8_unicode_ci,
+  `photo` text COLLATE utf8_unicode_ci NOT NULL,
+  `layer` text COLLATE utf8_unicode_ci,
+  `sortorder` bigint(20) NOT NULL DEFAULT '0',
+  `title` text COLLATE utf8_unicode_ci NULL DEFAULT NULL,
+  `link` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `description` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `featured` enum('true','false') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'false',
+  `active` enum('true','false') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'true',
+  PRIMARY KEY (`id`),
+  KEY `album_id` (`album_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
